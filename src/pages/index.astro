@@ -1,0 +1,203 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro";
+
+import AppHeader from '../components/Header.astro';
+import AppFooter from '../components/Footer.astro';
+import svgPinkStar from '../assets/pink-star.svg';
+import svgRedStar from '../assets/red-star.svg';
+import svgBlueStarCard from '../assets/blue-star-card.svg';
+
+// Cloud Architecture Skills and Certifications
+const skills = [
+  { category: "Cloud Platforms", items: ["AWS", "Azure", "Google Cloud", "Cloudflare"] },
+  { category: "Infrastructure as Code", items: ["Terraform", "CloudFormation", "Pulumi", "ARM Templates"] },
+  { category: "Containerization & Orchestration", items: ["Docker", "Kubernetes", "ECS", "AKS"] },
+  { category: "DevOps & CI/CD", items: ["GitHub Actions", "Azure DevOps", "Jenkins", "CircleCI"] },
+  { category: "Monitoring & Observability", items: ["Prometheus", "Grafana", "CloudWatch", "Azure Monitor"] },
+  { category: "Security", items: ["IAM", "Security Groups", "Network ACLs", "Azure AD"] }
+];
+
+const certifications = [
+  { name: "AWS Certified Solutions Architect Associate", issuer: "Amazon Web Services", image: "/aws_light.svg", date: "2023" },
+  { name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", image: "/azure.svg", date: "2023" },
+  { name: "AZ-900: Microsoft Azure Fundamentals", issuer: "Microsoft", image: "/AZ-900.png", date: "2022" },
+  { name: "AZ-305: Designing Microsoft Azure Infrastructure Solutions", issuer: "Microsoft", image: "/az-305.png", date: "2023" }
+];
+
+const projects = [
+  {
+    title: "Multi-Region Disaster Recovery Solution",
+    description: "Designed and implemented a cross-region disaster recovery architecture with automated failover capabilities, reducing potential downtime from hours to minutes.",
+    technologies: ["AWS", "Route53", "CloudFormation", "Lambda"]
+  },
+  {
+    title: "Microservices Migration",
+    description: "Led the migration of a monolithic application to a containerized microservices architecture, improving scalability and reducing deployment time by 70%.",
+    technologies: ["Azure", "Kubernetes", "Docker", "Terraform"]
+  },
+  {
+    title: "Serverless Data Processing Pipeline",
+    description: "Built a serverless ETL pipeline for processing large datasets, reducing operational costs by 60% while improving processing speed.",
+    technologies: ["AWS Lambda", "S3", "DynamoDB", "Step Functions"]
+  }
+];
+---
+
+<Layout>
+    <AppHeader />
+
+    <!-- Hero Section with Professional Summary -->
+    <section class="py-20 md:py-30 relative overflow-hidden">
+        <img src={svgPinkStar.src} alt="decorative star" width="80" class="absolute -right-9 top-20 hidden md:block" />
+        <img src={svgRedStar.src} alt="decorative star" width="60" class="absolute left-10 bottom-10 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-10 items-center">
+                <div class="flex flex-col gap-6">
+                    <h1 class="text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-tight">
+                        <span>Aspiring</span>
+                        <span class="relative">
+                            <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                            <span class="relative z-5">Cloud Architect</span>
+                        </span>
+                    </h1>
+                    <p class="text-[clamp(1rem,3.8vw,1.25rem)] max-w-[38ch] leading-relaxed">
+                        Passionate about designing scalable, resilient, and secure cloud infrastructure solutions.
+                        Combining technical expertise with business acumen to deliver cloud architectures that drive innovation and efficiency.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-4">
+                        <a href="#contact" class="bg-black text-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="bg-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="relative hidden md:block">
+                    <div class="border-3 border-black bg-white p-5 relative">
+                        <!-- Corner boxes -->
+                        <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                        <div class="flex flex-col gap-3">
+                            <div class="font-bold text-lg">Professional Focus</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Cloud Architecture</span>
+                                <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">Infrastructure as Code</span>
+                                <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">DevOps</span>
+                                <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">Security</span>
+                                <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Serverless</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+        <img src={svgBlueStarCard.src} alt="decorative star" width="70" class="absolute right-10 top-10 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-15">
+                <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Technical Competencies</h2>
+                <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-10">Specialized skills focused on cloud architecture, infrastructure automation, and secure system design.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {skills.map(skill => (
+                    <div class="border-2 border-black bg-[var(--main-bg)] p-5 transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        <h3 class="font-bold text-lg mb-3">{skill.category}</h3>
+                        <div class="flex flex-wrap gap-2">
+                            {skill.items.map(item => (
+                                <span class="bg-white px-2 py-1 text-sm border border-black">{item}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 relative overflow-hidden">
+        <img src={svgRedStar.src} alt="decorative star" width="60" class="absolute left-10 top-20 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-15">
+                <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Certifications</h2>
+                <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-10">Industry-recognized credentials validating expertise in cloud technologies and architecture.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {certifications.map(cert => (
+                    <div class="flex gap-4 items-center bg-white p-5 border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        <div class="w-[80px] h-[80px] flex items-center justify-center border-2 border-black bg-[var(--main-bg)] p-2">
+                            <img src={cert.image} alt={cert.name} class="w-full h-full object-contain" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">{cert.name}</h3>
+                            <p class="text-sm">{cert.issuer} • {cert.date}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+        <img src={svgPinkStar.src} alt="decorative star" width="80" class="absolute -right-10 bottom-10 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-15">
+                <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Notable Projects</h2>
+                <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-10">Showcasing practical experience in designing and implementing cloud solutions.</p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                {projects.map((project) => (
+                    <div class="border-2 border-black bg-[var(--main-bg)] p-6 transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        <h3 class="font-bold text-xl mb-3">{project.title}</h3>
+                        <p class="mb-4">{project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            {project.technologies.map(tech => (
+                                <span class="bg-white px-2 py-1 text-sm border border-black">{tech}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="border-3 border-black bg-white p-6 relative">
+                <!-- Corner boxes -->
+                <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                <div class="text-center">
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-4">Let's Connect</h2>
+                    <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-6">Interested in discussing cloud architecture solutions or potential opportunities? Reach out today.</p>
+
+                    <a href="mailto:contact@example.com" class="inline-block bg-black text-white px-8 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <AppFooter />
+</Layout>
+

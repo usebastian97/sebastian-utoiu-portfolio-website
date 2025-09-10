@@ -1,0 +1,174 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro";
+
+import AppHeader from '../components/Header.astro';
+import AppFooter from '../components/Footer.astro';
+import svgPinkStar from '../assets/pink-star.svg';
+import svgRedStar from '../assets/red-star.svg';
+import svgBlueStarCard from '../assets/blue-star-card.svg';
+
+// Get all blog posts
+const allPosts = await Astro.glob('./posts/*.md');
+
+// Sort posts by date (newest first)
+const sortedPosts = allPosts.sort((a, b) => {
+  return new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime();
+});
+
+// Blog categories for filtering (you can expand this later)
+const categories = [
+  "All Posts",
+  "Cloud Architecture",
+  "DevOps",
+  "Technology",
+  "Career"
+];
+---
+
+<Layout>
+    <AppHeader />
+
+    <!-- Blog Hero Section -->
+    <section class="py-20 md:py-30 relative overflow-hidden">
+        <img src={svgPinkStar.src} alt="decorative star" width="80" class="absolute -right-9 top-20 hidden md:block" />
+        <img src={svgRedStar.src} alt="decorative star" width="60" class="absolute left-10 bottom-10 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-tight mb-6">
+                    <span>My</span>
+                    <span class="relative">
+                        <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                        <span class="relative z-5">Blog</span>
+                    </span>
+                </h1>
+                <p class="text-[clamp(1rem,3.8vw,1.25rem)] max-w-[50ch] mx-auto leading-relaxed mb-8">
+                    Insights, tutorials, and thoughts on cloud architecture, DevOps, and modern technology.
+                    Join me on my journey as I explore the ever-evolving world of cloud computing.
+                </p>
+
+                <!-- Category Filter (for future use) -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    {categories.map(category => (
+                        <button class="px-4 py-2 border-2 border-black bg-white font-medium transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:bg-[var(--blue)]">
+                            {category}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+        <img src={svgBlueStarCard.src} alt="decorative star" width="70" class="absolute right-10 top-10 hidden md:block" />
+
+        <div class="max-w-4xl mx-auto px-4">
+            {sortedPosts.length > 0 ?
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {sortedPosts.map(post => (
+                        <article class="border-2 border-black bg-[var(--main-bg)] transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                            <div class="w-full h-[200px] overflow-hidden border-b-2 border-black">
+                                <img
+                                    src={post.frontmatter.image.url}
+                                    alt={post.frontmatter.image.alt || post.frontmatter.title}
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img
+                                        src={post.frontmatter.author.url}
+                                        alt={post.frontmatter.author.name}
+                                        class="w-8 h-8 rounded-full border border-black object-cover"
+                                    />
+                                    <div class="text-sm">
+                                        <span class="font-medium">{post.frontmatter.author.name}</span>
+                                        <span class="text-gray-600 ml-2">{post.frontmatter.pubDate}</span>
+                                    </div>
+                                </div>
+
+                                <h2 class="font-bold text-xl mb-3 leading-tight">
+                                    <a href={post.url} class="hover:underline">
+                                        {post.frontmatter.title}
+                                    </a>
+                                </h2>
+
+                                <div class="flex items-center justify-between text-sm text-gray-600 mb-4">
+                                    <div class="flex gap-4">
+                                        <span>👍 {post.frontmatter.likes}</span>
+                                        <span>💬 {post.frontmatter.comments}</span>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href={post.url}
+                                    class="inline-block bg-black text-white px-4 py-2 text-sm font-medium border-2 border-black transition-all duration-200 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)]"
+                                >
+                                    Read More
+                                </a>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            :
+                <div class="text-center py-20">
+                    <div class="border-3 border-black bg-white p-8 max-w-md mx-auto relative">
+                        <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                        <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                        <h3 class="text-2xl font-bold mb-4">Coming Soon!</h3>
+                        <p class="text-gray-600 mb-6">
+                            I'm working on some exciting articles about cloud architecture, DevOps best practices, and technology insights.
+                            Stay tuned for valuable content!
+                        </p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Cloud Architecture</span>
+                            <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">DevOps</span>
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Tutorials</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="py-20 relative overflow-hidden">
+        <img src={svgRedStar.src} alt="decorative star" width="60" class="absolute left-10 top-20 hidden md:block" />
+
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="border-3 border-black bg-white p-8 relative">
+                <!-- Corner boxes -->
+                <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                <div class="text-center">
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-4">Stay Updated</h2>
+                    <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[40ch] mx-auto mb-6">
+                        Get notified when I publish new articles about cloud architecture and technology insights.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            class="flex-1 px-4 py-3 border-2 border-black focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)]"
+                        />
+                        <button class="bg-black text-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <AppFooter />
+</Layout>
