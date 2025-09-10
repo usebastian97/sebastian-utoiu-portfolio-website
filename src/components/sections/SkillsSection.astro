@@ -1,0 +1,29 @@
+---
+import { skills } from '../../data/portfolio';
+import svgBlueStarCard from '../../assets/blue-star-card.svg';
+---
+
+<!-- Technical Skills Section -->
+<section id="skills" class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+    <img src={svgBlueStarCard.src} alt="decorative star" width="70" class="absolute right-10 top-10 hidden md:block" />
+
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-15">
+            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Technical Competencies</h2>
+            <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-10">Specialized skills focused on cloud architecture, infrastructure automation, and secure system design.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map(skill => (
+                <div class="border-2 border-black bg-[var(--main-bg)] p-5 transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                    <h3 class="font-bold text-lg mb-3">{skill.category}</h3>
+                    <div class="flex flex-wrap gap-2">
+                        {skill.items.map(item => (
+                            <span class="bg-white px-2 py-1 text-sm border border-black">{item}</span>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

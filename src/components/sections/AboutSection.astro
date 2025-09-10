@@ -1,0 +1,62 @@
+---
+// About Me Section Component
+---
+
+<!-- About Me Section -->
+<section class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-[40%_60%] gap-10 items-center">
+            <!-- Photo Section -->
+            <div class="relative">
+                <div class="border-3 border-black bg-white p-5 relative">
+                    <!-- Corner boxes -->
+                    <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                    <div class="w-full h-[250px] md:h-[350px] border-2 border-black overflow-hidden">
+                        <img src="/founder.jpg" alt="Sebastian Utoiu" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="flex flex-col gap-6">
+                <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold leading-tight">
+                    <span>About</span>
+                    <span class="relative">
+                        <span class="absolute bg-[var(--blue)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                        <span class="relative z-5">Me</span>
+                    </span>
+                </h2>
+
+                <div class="space-y-4 text-[clamp(0.9rem,3.8vw,1.1rem)] leading-relaxed">
+                    <p>
+                        I'm Sebastian, an IT Consultant with 3+ years of experience, now transitioning into Cloud Architecture with a strong foundation in SQL and database management.
+                        My journey in technology has been driven by a passion for solving complex problems and building scalable solutions.
+                    </p>
+
+                    <p>
+                        Currently pursuing a comprehensive Microsoft Azure certification roadmap including AZ-900, SC-900, AZ-104, AZ-305, AI-102, AI-900,
+                        DP-100, and beyond. I'm building deep expertise in Cloud Computing, Artificial Intelligence, and Security to become a
+                        well-rounded cloud architect.
+                    </p>
+
+                    <p>
+                        When I'm not diving into cloud technologies, I enjoy exploring the latest trends in DevOps, Infrastructure as Code,
+                        and sharing my learning journey through writing and community engagement.
+                    </p>
+                </div>
+
+                <!-- Skills Tags -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">SQL Expert</span>
+                    <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Azure Certified</span>
+                    <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">Cloud Architecture</span>
+                    <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">IT Consulting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,53 @@
+---
+// Hero Section Component
+---
+
+<!-- Hero Section with Professional Summary -->
+<section class="py-20 md:py-30 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-10 items-center">
+            <div class="flex flex-col gap-6">
+                <h1 class="text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-tight">
+                    <span>Hello</span>
+                    <span class="relative">
+                        <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                        <span class="relative z-5">I'm Sebastian</span>
+                    </span>
+                </h1>
+                <p class="text-[clamp(1rem,3.8vw,1.25rem)] max-w-[38ch] leading-relaxed">
+                    Passionate about designing scalable, resilient, and secure cloud infrastructure solutions.
+                    Combining technical expertise with business acumen to deliver cloud architectures that drive innovation and efficiency.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <a href="#contact" class="bg-black text-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="bg-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="relative block mt-8 md:mt-0">
+                <div class="border-3 border-black bg-white p-5 relative">
+                    <!-- Corner boxes -->
+                    <div class="size-3 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+                    <div class="size-3 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+                    <div class="flex flex-col gap-3">
+                        <div class="font-bold text-lg">Professional Focus</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Cloud Architecture</span>
+                            <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">Infrastructure as Code</span>
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">DevOps</span>
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">AI/ML</span>
+                            <span class="bg-[var(--yellow)] px-3 py-1 text-sm border border-black">Security</span>
+                            <span class="bg-[var(--blue)] px-3 py-1 text-sm border border-black">Serverless</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

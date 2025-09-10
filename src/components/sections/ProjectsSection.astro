@@ -1,0 +1,30 @@
+---
+import { projects } from '../../data/portfolio';
+import svgPinkStar from '../../assets/pink-star.svg';
+---
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="decorative star" width="80" class="absolute -right-10 bottom-10 hidden md:block" />
+
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-15">
+            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Notable Projects</h2>
+            <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[38ch] mx-auto mb-10">Showcasing practical experience in designing and implementing cloud solutions.</p>
+        </div>
+
+        <div class="flex flex-col gap-6">
+            {projects.map((project) => (
+                <div class="border-2 border-black bg-[var(--main-bg)] p-6 transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                    <h3 class="font-bold text-xl mb-3">{project.title}</h3>
+                    <p class="mb-4">{project.description}</p>
+                    <div class="flex flex-wrap gap-2">
+                        {project.technologies.map(tech => (
+                            <span class="bg-white px-2 py-1 text-sm border border-black">{tech}</span>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

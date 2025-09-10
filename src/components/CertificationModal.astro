@@ -1,0 +1,165 @@
+---
+// Certification Modal Component
+---
+
+<!-- Certification Modal Dialog -->
+<div id="certModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-[var(--main-bg)] border-3 border-black max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+        <!-- Corner boxes -->
+        <div class="size-3 bg-[var(--main-bg)] border-2 border-black absolute -top-2 -right-2"></div>
+        <div class="size-3 bg-[var(--main-bg)] border-2 border-black absolute -top-2 -left-2"></div>
+        <div class="size-3 bg-[var(--main-bg)] border-2 border-black absolute -bottom-2 -left-2"></div>
+        <div class="size-3 bg-[var(--main-bg)] border-2 border-black absolute -bottom-2 -right-2"></div>
+
+        <!-- Close button -->
+        <button
+            onclick="closeCertModal()"
+            class="absolute top-4 right-4 w-8 h-8 bg-black text-white border-2 border-black font-bold hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-all duration-200"
+        >
+            ×
+        </button>
+
+        <!-- Modal content -->
+        <div class="p-8">
+            <div class="flex gap-6 items-start mb-6">
+                <div class="w-[100px] h-[100px] flex items-center justify-center border-2 border-black bg-white p-3">
+                    <img id="modalCertImage" src="" alt="" class="w-full h-full object-contain" />
+                </div>
+                <div class="flex-1">
+                    <h2 id="modalCertName" class="text-[clamp(1.5rem,4vw,2rem)] font-bold mb-2"></h2>
+                    <p id="modalCertIssuer" class="text-lg mb-2"></p>
+                    <p id="modalCertDate" class="text-sm text-gray-600"></p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <span class="relative">
+                            <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                            <span class="relative z-5">Description</span>
+                        </span>
+                    </h3>
+                    <p id="modalCertDescription" class="leading-relaxed"></p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <span class="relative">
+                            <span class="absolute bg-[var(--blue)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+                            <span class="relative z-5">Skills Gained</span>
+                        </span>
+                    </h3>
+                    <div id="modalCertSkills" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Store certifications data for JavaScript access
+    const certificationsData = [
+        {
+            name: "Basic of Prompt Engineering",
+            issuer: "Codecademy",
+            image: "/codecademy.svg",
+            date: "Mar - 2025",
+            description: "Comprehensive course covering the fundamentals of prompt engineering for AI systems, including best practices for creating effective prompts and understanding AI model behavior.",
+            skillsGained: ["Prompt Design", "AI Communication", "Model Optimization", "Prompt Testing", "AI Ethics"]
+        },
+        {
+            name: "Excel for Data Analytics",
+            issuer: "Analyst Builder",
+            image: "/excel.svg",
+            date: "Mar - 2025",
+            description: "Advanced Excel techniques for data analysis including pivot tables, advanced formulas, data visualization, and statistical analysis for business intelligence.",
+            skillsGained: ["Advanced Excel", "Data Analysis", "Pivot Tables", "Statistical Functions", "Data Visualization"]
+        },
+        {
+            name: "MySQL for Data Analytics",
+            issuer: "Analyst Builder",
+            image: "/mysql.svg",
+            date: "Mar - 2025",
+            description: "Comprehensive MySQL training focused on data analytics, including complex queries, database optimization, and data manipulation for analytical purposes.",
+            skillsGained: ["MySQL", "SQL Queries", "Database Design", "Data Manipulation", "Performance Optimization"]
+        },
+        {
+            name: "Ultimate SQL Oracle",
+            issuer: "Udemy",
+            image: "/oracle.svg",
+            date: "Mar - 2021",
+            description: "Complete Oracle SQL course covering database fundamentals, advanced SQL techniques, PL/SQL programming, and enterprise database management.",
+            skillsGained: ["Oracle SQL", "PL/SQL", "Database Administration", "Query Optimization", "Enterprise Database Management"]
+        }
+    ];
+
+    window.openCertModal = function(index) {
+        const cert = certificationsData[index];
+        const modal = document.getElementById('certModal');
+
+        if (!modal) return;
+
+        // Populate modal content with null checks
+        const modalImage = document.getElementById('modalCertImage');
+        const modalName = document.getElementById('modalCertName');
+        const modalIssuer = document.getElementById('modalCertIssuer');
+        const modalDate = document.getElementById('modalCertDate');
+        const modalDescription = document.getElementById('modalCertDescription');
+
+        if (modalImage) {
+            modalImage.src = cert.image;
+            modalImage.alt = cert.name;
+        }
+        if (modalName) modalName.textContent = cert.name;
+        if (modalIssuer) modalIssuer.textContent = cert.issuer;
+        if (modalDate) modalDate.textContent = `Completed: ${cert.date}`;
+        if (modalDescription) modalDescription.textContent = cert.description;
+
+        // Populate skills
+        const skillsContainer = document.getElementById('modalCertSkills');
+        if (skillsContainer) {
+            skillsContainer.innerHTML = '';
+            cert.skillsGained.forEach((skill, skillIndex) => {
+                const skillTag = document.createElement('span');
+                skillTag.className = `px-3 py-1 text-sm border border-black ${skillIndex % 2 === 0 ? 'bg-[var(--blue)]' : 'bg-[var(--yellow)]'}`;
+                skillTag.textContent = skill;
+                skillsContainer.appendChild(skillTag);
+            });
+        }
+
+        // Show modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeCertModal = function() {
+        const modal = document.getElementById('certModal');
+        if (!modal) return;
+
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    };
+
+    // Initialize event listeners when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Close modal when clicking outside
+        const modal = document.getElementById('certModal');
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    window.closeCertModal();
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.closeCertModal();
+            }
+        });
+    });
+</script>
