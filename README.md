@@ -20,7 +20,7 @@ It showcases my **projects, certifications, and career roadmap** towards becomin
 
 - ⚡ [Astro](https://astro.build/) – Static Site Framework  
 - 🔷 TypeScript  
-- 🎨 TailwindCSS (if used)  
+- 🎨 TailwindCSS  
 - ☁️ Hosted on GitHub Pages  
 
 ---
@@ -31,3 +31,4 @@ It showcases my **projects, certifications, and career roadmap** towards becomin
 - Projects & certifications showcase  
 - Astro Islands architecture  
 - SEO-friendly
+
