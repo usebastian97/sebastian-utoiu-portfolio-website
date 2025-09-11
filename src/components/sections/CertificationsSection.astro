@@ -16,13 +16,10 @@ import svgRedStar from '../../assets/red-star.svg';
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
                 <button
-                    class="flex gap-4 items-center bg-white p-5 border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)] cursor-pointer text-left w-full"
+                    class="bg-white p-5 border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)] cursor-pointer text-left w-full"
                     onclick={`openCertModal(${index})`}
                 >
-                    <div class="w-[80px] h-[80px] flex items-center justify-center border-2 border-black bg-[var(--main-bg)] p-2">
-                        <img src={cert.image} alt={cert.name} class="w-full h-full object-contain" />
-                    </div>
-                    <div class="flex-1">
+                    <div>
                         <h3 class="font-bold text-lg">{cert.name}</h3>
                         <p class="text-sm">{cert.issuer} • {cert.date}</p>
                         <p class="text-xs text-gray-600 mt-1">Click for details</p>

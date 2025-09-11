@@ -3,7 +3,7 @@
 ---
 
 <!-- Certification Modal Dialog -->
-<div id="certModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+<div id="certModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="backdrop-filter: blur(6px); background-color: rgba(255, 255, 255, 0.1);">
     <div class="bg-[var(--main-bg)] border-3 border-black max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
         <!-- Corner boxes -->
         <div class="size-3 bg-[var(--main-bg)] border-2 border-black absolute -top-2 -right-2"></div>
@@ -21,15 +21,10 @@
 
         <!-- Modal content -->
         <div class="p-8">
-            <div class="flex gap-6 items-start mb-6">
-                <div class="w-[100px] h-[100px] flex items-center justify-center border-2 border-black bg-white p-3">
-                    <img id="modalCertImage" src="" alt="" class="w-full h-full object-contain" />
-                </div>
-                <div class="flex-1">
-                    <h2 id="modalCertName" class="text-[clamp(1.5rem,4vw,2rem)] font-bold mb-2"></h2>
-                    <p id="modalCertIssuer" class="text-lg mb-2"></p>
-                    <p id="modalCertDate" class="text-sm text-gray-600"></p>
-                </div>
+            <div class="mb-6">
+                <h2 id="modalCertName" class="text-[clamp(1.5rem,4vw,2rem)] font-bold mb-2"></h2>
+                <p id="modalCertIssuer" class="text-lg mb-2"></p>
+                <p id="modalCertDate" class="text-sm text-gray-600"></p>
             </div>
 
             <div class="space-y-6">
@@ -94,23 +89,19 @@
         }
     ];
 
-    window.openCertModal = function(index) {
+    // Open modal function
+    (window as any).openCertModal = function(index: number) {
         const cert = certificationsData[index];
         const modal = document.getElementById('certModal');
 
         if (!modal) return;
 
         // Populate modal content with null checks
-        const modalImage = document.getElementById('modalCertImage');
         const modalName = document.getElementById('modalCertName');
         const modalIssuer = document.getElementById('modalCertIssuer');
         const modalDate = document.getElementById('modalCertDate');
         const modalDescription = document.getElementById('modalCertDescription');
 
-        if (modalImage) {
-            modalImage.src = cert.image;
-            modalImage.alt = cert.name;
-        }
         if (modalName) modalName.textContent = cert.name;
         if (modalIssuer) modalIssuer.textContent = cert.issuer;
         if (modalDate) modalDate.textContent = `Completed: ${cert.date}`;
@@ -134,7 +125,7 @@
         document.body.style.overflow = 'hidden';
     };
 
-    window.closeCertModal = function() {
+    (window as any).closeCertModal = function() {
         const modal = document.getElementById('certModal');
         if (!modal) return;
 
@@ -150,7 +141,7 @@
         if (modal) {
             modal.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    window.closeCertModal();
+                    (window as any).closeCertModal();
                 }
             });
         }
@@ -158,7 +149,7 @@
         // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                window.closeCertModal();
+                (window as any).closeCertModal();
             }
         });
     });
