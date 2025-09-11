@@ -3,9 +3,9 @@ import logoStar from '../assets/logo-star.svg'
 import { author } from '../sample'
 
 const socials = [
-  { icon: 'ri-tiktok-fill', link: author.tiktok },
-	{ icon: 'ri-instagram-line', link: author.ig },
-  { icon: 'ri-twitter-x-line', link: author.x },
+  { icon: 'ri-linkedin-fill', link: author.linkedin, color: 'text-blue-600' },
+  { icon: 'ri-github-fill', link: author.github, color: 'text-gray-800' },
+  { icon: 'ri-twitter-x-line', link: author.x, color: 'text-gray-800' },
 ]
 
 ---
@@ -20,9 +20,11 @@ const socials = [
       <div class="text-center">
         <p>© {new Date().getFullYear()} {author.nickname}. All rights reserved.</p>
       </div>
-      <div class="flex md:justify-end gap-5">
-        {socials.map(item => ( 
-          <a href={item.link} target="_blank" class="transition-all duration-200 hover:translate-y-[2px]"><i class={`${item.icon} text-2xl`}></i></a>
+      <div class="flex md:justify-end gap-3">
+        {socials.map(item => (
+          <a href={item.link} target="_blank" class="w-10 h-10 bg-white border-2 border-black flex items-center justify-center transition-all duration-200 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
+            <i class={`${item.icon} text-xl ${item.color}`}></i>
+          </a>
         ))}
       </div>
     </div>
