@@ -1,5 +1,6 @@
 ---
 // Hero Section Component
+import { author } from '../../sample';
 ---
 
 <!-- Hero Section with Professional Summary -->
@@ -19,12 +20,28 @@
                     Combining technical expertise with business acumen to deliver cloud architectures that drive innovation and efficiency.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-4">
-                    <a href="#contact" class="bg-black text-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
-                        Contact Me
+                    <a href="/Sebastian_Utoiu_CV_EN.pdf" download="Sebastian_Utoiu_CV_EN.pdf" class="bg-black text-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        Download CV
                     </a>
-                    <a href="#projects" class="bg-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
-                        View Projects
+                    <a href="#certifications" class="bg-white px-6 py-3 font-medium border-2 border-black transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+                        View Certifications
                     </a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex items-center gap-4 mt-6">
+                    <span class="text-sm font-medium text-gray-600">Connect with me:</span>
+                    <div class="flex gap-3">
+                        <a href={author.linkedin} target="_blank" class="w-10 h-10 bg-white border-2 border-black flex items-center justify-center transition-all duration-200 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
+                            <i class="ri-linkedin-fill text-xl text-blue-600"></i>
+                        </a>
+                        <a href={author.github} target="_blank" class="w-10 h-10 bg-white border-2 border-black flex items-center justify-center transition-all duration-200 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
+                            <i class="ri-github-fill text-xl text-gray-800"></i>
+                        </a>
+                        <a href={author.x} target="_blank" class="w-10 h-10 bg-white border-2 border-black flex items-center justify-center transition-all duration-200 hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
+                            <i class="ri-twitter-x-line text-xl text-gray-800"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="relative block mt-8 md:mt-0">

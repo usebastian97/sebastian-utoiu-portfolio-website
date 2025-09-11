@@ -1,0 +1,238 @@
+---
+// Roadmap Section Component
+import svgPinkStar from '../../assets/pink-star.svg';
+
+// Import certification SVGs
+import azureAZ900 from '../../assets/roadmp/AZ-900.svg';
+import azureSC900 from '../../assets/roadmp/SC-900.svg';
+import azureAZ104 from '../../assets/roadmp/AZ-104.svg';
+import azureAZ500 from '../../assets/roadmp/AZ-500.svg';
+import azureAZ305 from '../../assets/roadmp/AZ-305.png';
+import azureAI900 from '../../assets/roadmp/AI-900.svg';
+import azureAI102 from '../../assets/roadmp/AI-102.svg';
+import azureDP100 from '../../assets/roadmp/DP-100.svg';
+import kubernetes from '../../assets/roadmp/kubernetes.svg';
+import docker from '../../assets/docker.svg';
+import terraform from '../../assets/terraform.svg';
+
+// Roadmap data structure
+const roadmapPhases = [
+  {
+    phase: "Phase 1",
+    title: "Fundamentals (Solid Foundation)",
+    description: "Building core knowledge in Azure and security fundamentals",
+    certifications: [
+      {
+        name: "AZ-900",
+        fullName: "Microsoft Azure Fundamentals",
+        icon: azureAZ900,
+        status: "in-progress", // planned, in-progress, completed
+        keyLearnings: ["Cloud Fundamentals", "Azure Services", "Pricing Models"]
+      },
+      {
+        name: "SC-900",
+        fullName: "Microsoft Security, Compliance, and Identity Fundamentals",
+        icon: azureSC900,
+        status: "planned",
+        keyLearnings: ["Security Basics", "Compliance", "Identity Management"]
+      }
+    ]
+  },
+  {
+    phase: "Phase 2",
+    title: "Administration and Basic Security",
+    description: "Mastering Azure administration and containerization basics",
+    certifications: [
+      {
+        name: "AZ-104",
+        fullName: "Microsoft Azure Administrator Associate",
+        icon: azureAZ104,
+        status: "planned",
+        keyLearnings: ["Resource Management", "Networking", "Storage Solutions"]
+      },
+      {
+        name: "DCA",
+        fullName: "Docker Certified Associate",
+        icon: docker,
+        status: "planned",
+        keyLearnings: ["Containerization", "Docker Compose", "Registry Management"]
+      },
+      {
+        name: "AZ-500",
+        fullName: "Microsoft Azure Security Engineer Associate",
+        icon: azureAZ500,
+        status: "planned",
+        keyLearnings: ["Security Implementation", "Identity Protection", "Data Security"]
+      }
+    ]
+  },
+  {
+    phase: "Phase 3",
+    title: "Architecture and Orchestration",
+    description: "Advanced orchestration and enterprise architecture design",
+    certifications: [
+      {
+        name: "CKA",
+        fullName: "Certified Kubernetes Administrator",
+        icon: kubernetes,
+        status: "planned",
+        keyLearnings: ["Kubernetes Admin", "Pod Management", "Cluster Operations"]
+      },
+      {
+        name: "AZ-305",
+        fullName: "Microsoft Azure Solutions Architect Expert",
+        icon: azureAZ305,
+        status: "planned",
+        keyLearnings: ["Solution Architecture", "Design Patterns", "Enterprise Scale"]
+      }
+    ]
+  },
+  {
+    phase: "Phase 4",
+    title: "AI and Data Science",
+    description: "Specializing in AI solutions and data science on Azure",
+    certifications: [
+      {
+        name: "AI-900",
+        fullName: "Microsoft Azure AI Fundamentals",
+        icon: azureAI900,
+        status: "planned",
+        keyLearnings: ["AI Concepts", "Machine Learning", "Cognitive Services"]
+      },
+      {
+        name: "AI-102",
+        fullName: "Designing and Implementing Azure AI Solutions",
+        icon: azureAI102,
+        status: "planned",
+        keyLearnings: ["AI Development", "Custom Models", "AI Services Integration"]
+      },
+      {
+        name: "DP-100",
+        fullName: "Designing and Implementing a Data Science Solution on Azure",
+        icon: azureDP100,
+        status: "planned",
+        keyLearnings: ["Data Science", "ML Models", "Azure ML Platform"]
+      }
+    ]
+  },
+  {
+    phase: "Phase 5",
+    title: "Infrastructure as Code (IaC)",
+    description: "Mastering infrastructure automation and provisioning",
+    certifications: [
+      {
+        name: "Terraform Associate",
+        fullName: "HashiCorp Certified: Terraform Associate",
+        icon: terraform,
+        status: "planned",
+        keyLearnings: ["Infrastructure as Code", "State Management", "Resource Provisioning"]
+      }
+    ]
+  }
+];
+---
+
+<!-- Roadmap Section -->
+<section id="roadmap" class="py-20 bg-white border-y-3 border-black relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="decorative star" width="60" class="absolute right-10 top-10 hidden md:block" />
+
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-15">
+            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-6">Certification Roadmap</h2>
+            <p class="text-[clamp(0.9rem,3.8vw,1.1rem)] max-w-[50ch] mx-auto mb-10">
+                My strategic path to becoming a certified Cloud Architect, focusing on Azure, containers, orchestration, AI, and Infrastructure as Code.
+            </p>
+        </div>
+
+        <div class="space-y-12">
+            {roadmapPhases.map((phase, phaseIndex) => (
+                <div class="relative">
+                    <!-- Phase Header -->
+                    <div class="mb-6">
+                        <!-- Phase Badge -->
+                        <div class="bg-[var(--yellow)] border-2 border-black px-4 py-2 font-bold text-lg inline-block mb-3">
+                            {phase.phase}
+                        </div>
+                        <!-- Phase Title and Description -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">{phase.title}</h3>
+                            <p class="text-sm text-gray-600">{phase.description}</p>
+                        </div>
+                    </div>
+
+                    <!-- Certifications Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {phase.certifications.map((cert) => (
+                            <div class="bg-[var(--main-bg)] border-2 border-black p-4 transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)] relative">
+                                <!-- Status indicators grouped on the right -->
+                                <div class="absolute top-2 right-2 flex items-center gap-2">
+                                    <!-- Status badge -->
+                                    {cert.status !== 'planned' && (
+                                        <div class={`px-2 py-1 text-xs font-bold border border-black ${
+                                            cert.status === 'completed' ? 'bg-green-400 text-black' :
+                                            cert.status === 'in-progress' ? 'bg-[var(--yellow)] text-black' :
+                                            'bg-gray-300 text-black'
+                                        }`}>
+                                            {cert.status === 'completed' ? '✓ DONE' :
+                                             cert.status === 'in-progress' ? 'IN PROGRESS' : ''}
+                                        </div>
+                                    )}
+                                    <!-- Status circle indicator -->
+                                    <div class={`w-3 h-3 rounded-full border border-black ${
+                                        cert.status === 'completed' ? 'bg-green-400' :
+                                        cert.status === 'in-progress' ? 'bg-[var(--yellow)]' :
+                                        'bg-gray-300'
+                                    }`}></div>
+                                </div>
+
+                                <!-- Certification content -->
+                                <div class="flex items-start gap-3 pr-16">
+                                    <img src={cert.icon.src} alt={cert.name} width="40" height="40" class="flex-shrink-0" />
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-bold text-sm mb-1">{cert.name}</h4>
+                                        <p class="text-xs text-gray-600 leading-tight mb-2">{cert.fullName}</p>
+
+                                        <!-- Key Learning Tags -->
+                                        <div class="flex flex-wrap gap-1">
+                                            {cert.keyLearnings.map((learning) => (
+                                                <span class="bg-white px-2 py-1 text-xs border border-black text-gray-700">
+                                                    {learning}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <!-- Connection line to next phase (except for last phase) -->
+                    {phaseIndex < roadmapPhases.length - 1 && (
+                        <div class="flex justify-center mt-8">
+                            <div class="w-0.5 h-8 bg-black"></div>
+                            <div class="absolute w-3 h-3 bg-black transform rotate-45 mt-6"></div>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-12 flex justify-center">
+            <div class="flex items-center gap-6 text-sm">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-gray-300 border border-black"></div>
+                    <span>Planned</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-[var(--yellow)] border border-black"></div>
+                    <span>In Progress</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-green-400 border border-black"></div>
+                    <span>Completed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
